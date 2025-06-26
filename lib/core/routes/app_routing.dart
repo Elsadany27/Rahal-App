@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reservation/features/auth/register_screen.dart';
+import 'package:reservation/features/auth/presentation/view/register_screen.dart';
 
 import '../../features/onboarding/presentation/view/onboarding_page.dart';
 import '../../features/splash/presentation/view/splash_screen.dart';
