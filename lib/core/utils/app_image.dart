@@ -4,4 +4,7 @@ class Assets {
   static const String on2Image="assets/images/on2 (2).png";
   static const String on3Image="assets/images/oon1-Photoroom.png";
 
+  //auth
+  static const String busImage="assets/images/bbus-removebg-preview.png";
+
 }
