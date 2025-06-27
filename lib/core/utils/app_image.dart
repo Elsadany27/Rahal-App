@@ -5,6 +5,6 @@ class Assets {
   static const String on3Image="assets/images/oon1-Photoroom.png";
 
   //auth
-  static const String busImage="assets/images/bbus-removebg-preview.png";
+  static const String busImage="assets/images/icono_bus_04_b0df593568-removebg-preview.png";
 
 }
