@@ -24,7 +24,9 @@ class _CustomePageviewState extends State<CustomePageview> {
   @override
   void dispose() {
     _pageController.dispose();
+    super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final screenSize=MediaQuery.of(context).size;
