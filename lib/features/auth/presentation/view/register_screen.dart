@@ -7,8 +7,9 @@ import 'package:reservation/features/auth/presentation/view/view%20model/auth_cu
 import 'package:reservation/features/auth/presentation/view/view%20model/auth_state.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield_pass.dart';
-
+import '../../../../core/services/sharred_prefrence.dart';
 import '../../../../core/widgets/custome_elevated_button.dart';
+import '../../../../core/widgets/custome_loading_indicator.dart';
 
 class RegisterScreen extends StatelessWidget {
    RegisterScreen({super.key});
@@ -48,25 +49,24 @@ class RegisterScreen extends StatelessWidget {
 
                     //button
                     SizedBox(height: screenSize.height*0.08,),
-
-
           BlocBuilder<AuthCubit,AuthState>(builder: (context, state) {
                             if(state is IsloadingRegisterState){
-                              return CircularProgressIndicator();
+                              return Center(child: CustomeLoadingIndicator());
                             }
                             else if(state is FailureRegisterState){
                               return Center(child: Text("${state.errorMessage}"));
                             }
                             else{
-                              return CustomeElevatedButton(ontap: (){
+                              return CustomeElevatedButton(ontap: ()async{
                                 if(keyRegister.currentState!.validate()){
+                                  await SharedPrefsService.saveName(name.text.trim());
                                   context.read<AuthCubit>().signupMethodCubit(email: email.text.trim(),password: password.text.trim(),context: context);
                                 }
                               },texxt: "تسجيل",backgroundColor: AppColor.green,textColor: Colors.white,);
                             }
                           },),
                     SizedBox(height: screenSize.height*0.03,),
-                    CustomeElevatedButton(ontap: (){
+                    CustomeElevatedButton(ontap: ()async{
                       Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.loginScreen, (route) => false,);
                     },texxt: "تسجيل دخول",backgroundColor: Colors.white,textColor: AppColor.green,)
                   ],),

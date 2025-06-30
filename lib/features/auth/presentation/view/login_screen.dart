@@ -13,6 +13,7 @@ class LoginScreen extends StatelessWidget {
 
   TextEditingController email=TextEditingController();
   TextEditingController password=TextEditingController();
+  GlobalKey<FormState> keyLoginn=GlobalKey();
   @override
   Widget build(BuildContext context) {
     final screenSize=MediaQuery.of(context).size;
@@ -20,30 +21,33 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Color(0xffFFFFFD),
       body: Padding(
         padding:  EdgeInsets.only(top: screenSize.height*0.07,left: screenSize.width*0.03,right: screenSize.width*0.03),
-        child: ListView(
-          children: [
-            //image
-            Image.asset(Assets.busImage,height: screenSize.height*0.15,scale: 0.5,color: AppColor.green,),
-            //form
-            SizedBox(height: screenSize.height*0.05,),
-            Text("الايميل",style: TextStyle(fontWeight: FontWeight.w700,color: AppColor.green,fontSize: screenSize.width*0.04),textDirection: TextDirection.rtl,),SizedBox(height: screenSize.height*0.01,),
-            CustomeTextformfield(hintText: "randahamdy@gmail.com",secure: false,controller:email,rightIcon: Icon(Icons.email_outlined),),
+        child: Form(
+          key: keyLoginn,
+          child: ListView(
+            children: [
+              //image
+              Image.asset(Assets.busImage,height: screenSize.height*0.15,scale: 0.5,color: AppColor.green,),
+              //form
+              SizedBox(height: screenSize.height*0.05,),
+              Text("الايميل",style: TextStyle(fontWeight: FontWeight.w700,color: AppColor.green,fontSize: screenSize.width*0.04),textDirection: TextDirection.rtl,),SizedBox(height: screenSize.height*0.01,),
+              CustomeTextformfield(hintText: "randahamdy@gmail.com",secure: false,controller:email,rightIcon: Icon(Icons.email_outlined),),
 
-            SizedBox(height: screenSize.height*0.02,),
-            Text("كلمة المرور",style: TextStyle(fontWeight: FontWeight.w700,color: AppColor.green,fontSize: screenSize.width*0.04),textDirection: TextDirection.rtl,),SizedBox(height: screenSize.height*0.01,),
-            CustomeTextformfieldPass(hintText: "*********",controller:password,rightIcon: Icon(Icons.lock_outline),),
-            //button
-            SizedBox(height: screenSize.height*0.01,),
-            CustomeTermsAndButtonLoginPage(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              TextButton(onPressed: (){
-                Navigator.of(context).pushNamed(AppRoutes.registerScreen);
-              },child:Text("سجل الاَن",style: TextStyle(color: AppColor.green,fontWeight: FontWeight.w600),)),
-              Text("جديد؟",style: TextStyle(color: AppColor.blackLight,fontWeight: FontWeight.w600),)
-            ],)
-          ],),
+              SizedBox(height: screenSize.height*0.02,),
+              Text("كلمة المرور",style: TextStyle(fontWeight: FontWeight.w700,color: AppColor.green,fontSize: screenSize.width*0.04),textDirection: TextDirection.rtl,),SizedBox(height: screenSize.height*0.01,),
+              CustomeTextformfieldPass(hintText: "*********",controller:password,rightIcon: Icon(Icons.lock_outline),),
+              //button
+              SizedBox(height: screenSize.height*0.01,),
+              CustomeTermsAndButtonLoginPage(email: email,password: password,keyLogin: keyLoginn,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                TextButton(onPressed: (){
+                  Navigator.of(context).pushNamed(AppRoutes.registerScreen);
+                },child:Text("سجل الاَن",style: TextStyle(color: AppColor.green,fontWeight: FontWeight.w600),)),
+                Text("جديد؟",style: TextStyle(color: AppColor.blackLight,fontWeight: FontWeight.w600),)
+              ],)
+            ],),
+        ),
       ),
     );
   }
