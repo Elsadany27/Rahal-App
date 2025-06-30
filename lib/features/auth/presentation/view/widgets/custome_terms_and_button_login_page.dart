@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/widgets/custome_elevated_button.dart';
+import '../../../../../core/widgets/custome_loading_indicator.dart';
+import '../view model/auth_cubit.dart';
+import '../view model/auth_state.dart';
 import 'custome_checkbox.dart';
 
 class CustomeTermsAndButtonLoginPage extends StatefulWidget {
-  const CustomeTermsAndButtonLoginPage({super.key});
+   CustomeTermsAndButtonLoginPage({super.key,this.email,this.password,this.keyLogin});
 
+  TextEditingController? email;
+  TextEditingController? password;
+  GlobalKey<FormState>? keyLogin;
   @override
   State<CustomeTermsAndButtonLoginPage> createState() => _CustomeTermsAndButtonLoginPageState();
 }
@@ -29,7 +36,26 @@ class _CustomeTermsAndButtonLoginPageState extends State<CustomeTermsAndButtonLo
         SizedBox(height: screenSize.height*0.08,),
         SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: CustomeElevatedButton(ontap: () {}, texxt: "تسجيل الدخول", backgroundColor: AppColor.green, textColor: Colors.white,)),
+            child: BlocBuilder<AuthCubit,AuthState>(builder: (context, state) {
+              if(state is IsloadingLoginState){
+                return Center(child: CustomeLoadingIndicator());
+              }
+              else if(state is FailureLoginState){
+                return Center(child: Text("${state.errorMessage}"));
+              }
+              else{
+                return CustomeElevatedButton(ontap: ()async{
+                  if(isChecked==true){
+                    if(widget.keyLogin!.currentState!.validate()){
+                      context.read<AuthCubit>().loginMethodCubit(email: widget.email!.text.trim(),password: widget.password!.text.trim(),context: context);
+                    }
+                  }
+                  else{
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("يجب ان توافق على الشروط والاحكام")));
+                  }
+                },texxt: "تسجيل",backgroundColor: AppColor.green,textColor: Colors.white,);
+              }
+            },),),
         SizedBox(height: screenSize.height * 0.03),
         SizedBox(height: screenSize.height * 0.05),
       ],

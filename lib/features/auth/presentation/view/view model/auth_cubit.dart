@@ -20,18 +20,29 @@ class AuthCubit extends Cubit<AuthState>{
   }
 
   //register
-  signupMethodCubit({String? email,String? password,required BuildContext context})async{
-    String? messageRegister;
+  signupMethodCubit({String? email,String? password,context})async{
+    // String? messageRegister;
     emit(IsloadingRegisterState());
     try{
-      messageRegister =await _authDatasource.registerMethod(email: email,password: password);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$messageRegister")));
-      emit(SuccessRegisterState(succesMessage: messageRegister));
+      await _authDatasource.registerMethod(email: email,password: password,context: context);
+      emit(SuccessRegisterState());
       print("تم");
     }catch(e){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$messageRegister")));
       print(e);
       emit(FailureRegisterState(errorMessage: e.toString()));
     }
   }
+
+  //login
+  loginMethodCubit({String? email,String? password,context})async{
+    emit(IsloadingLoginState());
+    try{
+      await _authDatasource.loginMethod(context: context,password: password,email: email);
+      emit(SuccessLoginState());
+    }catch(e){
+      print(e);
+      emit(FailureLoginState(errorMessage: e.toString()));
+    }
+  }
+
 }
