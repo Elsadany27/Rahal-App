@@ -6,6 +6,7 @@ import 'package:reservation/features/auth/presentation/view/widgets/custome_chec
 import 'package:reservation/features/auth/presentation/view/widgets/custome_terms_and_button_login_page.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield_pass.dart';
+import '../../../../core/services/sharred_prefrence.dart';
 import '../../../../core/widgets/custome_elevated_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                TextButton(onPressed: (){
+                TextButton(onPressed: ()async{
                   Navigator.of(context).pushNamed(AppRoutes.registerScreen);
                 },child:Text("سجل الاَن",style: TextStyle(color: AppColor.green,fontWeight: FontWeight.w600),)),
                 Text("جديد؟",style: TextStyle(color: AppColor.blackLight,fontWeight: FontWeight.w600),)

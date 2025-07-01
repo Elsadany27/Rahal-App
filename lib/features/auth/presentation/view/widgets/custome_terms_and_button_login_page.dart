@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/services/sharred_prefrence.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/widgets/custome_elevated_button.dart';
 import '../../../../../core/widgets/custome_loading_indicator.dart';
@@ -45,6 +46,8 @@ class _CustomeTermsAndButtonLoginPageState extends State<CustomeTermsAndButtonLo
               }
               else{
                 return CustomeElevatedButton(ontap: ()async{
+                  final savedName = await SharedPrefsService.getName();
+                  print("Saved name: $savedName");
                   if(isChecked==true){
                     if(widget.keyLogin!.currentState!.validate()){
                       context.read<AuthCubit>().loginMethodCubit(email: widget.email!.text.trim(),password: widget.password!.text.trim(),context: context);

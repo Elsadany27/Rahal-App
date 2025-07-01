@@ -6,5 +6,8 @@ class Assets {
 
   //auth
   static const String busImage="assets/images/icono_bus_04_b0df593568-removebg-preview.png";
+  //home
+  static const String homeUmage="assets/images/home-removebg-preview (1).png";
+  static const String profileImage="assets/images/profile-removebg-preview.png";
 
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation/features/auth/presentation/view/login_screen.dart';
 import 'package:reservation/features/auth/presentation/view/register_screen.dart';
 import 'package:reservation/features/auth/presentation/view/view%20model/auth_cubit.dart';
+import 'package:reservation/features/home/presentation/view/home_screen.dart';
 
 import '../../features/onboarding/presentation/view/onboarding_page.dart';
 import '../../features/splash/presentation/view/splash_screen.dart';
@@ -30,7 +31,6 @@ class AppRouting {
               ),
         );
 
-
       case AppRoutes.loginScreen:
         return MaterialPageRoute(
           builder: (_) =>
@@ -38,6 +38,11 @@ class AppRouting {
                 create: (context) => AuthCubit(),
                 child: LoginScreen(),
               ),
+        );
+
+      case AppRoutes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => HomeScreen(),
         );
 
 

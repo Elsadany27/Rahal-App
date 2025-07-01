@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart'; // ✅ correct import
 import 'package:reservation/core/routes/app_routing.dart';
 
 import 'core/routes/app_routes.dart';
-import 'features/splash/presentation/view/splash_screen.dart';
 
-main(){
+main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ar'); // 🔥 required for Arabic
   runApp(RahalApp(appRouting: AppRouting(),));
 }
 

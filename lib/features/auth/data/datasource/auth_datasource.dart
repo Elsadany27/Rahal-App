@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:reservation/core/routes/app_routes.dart';
+
+import '../../../../core/services/sharred_prefrence.dart';
 
 class AuthDatasource {
   Dio dio=Dio();
@@ -19,6 +22,7 @@ class AuthDatasource {
         message = response.data["message"];
       }
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$message")));
+      Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.loginScreen, (route) => false,);
     } on DioException catch (e) {
       if (e.response != null) {
         // Handle 400 Bad Request and other errors
@@ -56,9 +60,10 @@ class AuthDatasource {
       if (response.statusCode == 200) {
         messageLogin = response.data["message"];
         token=response.data["access"];
-        print(token);
+        await SharedPrefsService.saveToken(token!);
       }
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$messageLogin")));
+      Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.homeScreen, (route) => false,);
     } on DioException catch (e) {
       if (e.response != null) {
         // Handle 400 Bad Request and other errors
