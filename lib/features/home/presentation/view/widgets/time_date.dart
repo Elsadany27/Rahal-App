@@ -150,7 +150,7 @@ class _TimeDateState extends State<TimeDate> {
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: 250,
+          height: 170,
           child: EasyInfiniteDateTimeLine(
             firstDate: _firstDate,
             focusDate: _focusedDate,
@@ -162,9 +162,6 @@ class _TimeDateState extends State<TimeDate> {
               setState(() {
                 _focusedDate = selectedDate;
               });
-              debugPrint("Selected: ${DateFormat.yMMMd('ar').format(selectedDate)}");
-
-              // 🔥 Send selected date to parent
               widget.onDateSelected?.call(selectedDate);
             },
           ),
