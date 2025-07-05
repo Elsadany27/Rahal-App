@@ -21,7 +21,8 @@ class _DropdownOptionsDestinationState
     "المنصوره",
     "العين السخنه",
     "شرم الشيخ",
-    "الغردقه"
+    "الغردقه",
+    "مرسي مطروح"
   ];
 
   @override
