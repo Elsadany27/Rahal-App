@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:reservation/core/routes/app_routes.dart';
+import 'package:reservation/core/utils/constance.dart';
 
 import '../../../../core/services/sharred_prefrence.dart';
 
@@ -8,7 +9,7 @@ class AuthDatasource {
   Dio dio=Dio();
 
   registerMethod({String? email, String? password,context}) async {
-    String urlRegister = "http://192.168.1.8:8000/register/";
+    String urlRegister = "${Constance.baseUrl}/register/";
     String? message;
 
     final data = {
@@ -48,7 +49,7 @@ class AuthDatasource {
   //login
   loginMethod({String? email, String? password,context}) async {
     String? messageLogin;
-    String urlLogin = "http://192.168.1.8:8000/login/";
+    String urlLogin = "${Constance.baseUrl}/login/";
     String? token;
     final data = {
       "email": email,
