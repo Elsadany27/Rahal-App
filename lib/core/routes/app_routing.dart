@@ -49,12 +49,26 @@ class AppRouting {
 
 
       case AppRoutes.tripsScreen:
+      // Retrieve arguments from settings
+        final args = settings.arguments as Map<String, dynamic>?;
+
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-                create: (context) => HomeCubit(),
-                child: TripsPage(),
-              ),
+            create: (context) => HomeCubit(),
+            child: TripsPage(
+              dateTrip: args != null ? args['dateTrip'] : null,
+              destinationStation: args != null ? args['destinationStation'] : null,
+              fromStation: args != null ? args['fromStation'] : null,
+            ),
+          ),
         );
+      // case AppRoutes.tripsScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => BlocProvider(
+      //           create: (context) => HomeCubit(),
+      //           child: TripsPage(),
+      //         ),
+      //   );
 
 
       default:

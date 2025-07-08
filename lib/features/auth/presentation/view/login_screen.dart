@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:reservation/core/routes/app_routes.dart';
 import 'package:reservation/core/utils/app_color.dart';
 import 'package:reservation/core/utils/app_image.dart';
-import 'package:reservation/features/auth/presentation/view/widgets/custome_checkbox.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_terms_and_button_login_page.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield.dart';
 import 'package:reservation/features/auth/presentation/view/widgets/custome_textformfield_pass.dart';
-import '../../../../core/services/sharred_prefrence.dart';
-import '../../../../core/widgets/custome_elevated_button.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

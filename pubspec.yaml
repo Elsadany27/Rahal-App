@@ -41,6 +41,7 @@ dependencies:
   easy_date_timeline:
   intl:
   flutter_dotenv:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
