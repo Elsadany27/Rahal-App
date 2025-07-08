@@ -140,7 +140,13 @@ class _CustomeContainerSearchAreasState extends State<CustomeContainerSearchArea
                 print("From: $fromArea");
                 print("To: $destinationArea");
                 print("Date: ${selectedDate != null ? DateFormat('MMMM d, y', 'ar').format(selectedDate!) : 'Not selected'}");
-                Navigator.of(context).pushNamed(AppRoutes.tripsScreen);
+               Navigator.pushNamed(context, AppRoutes.tripsScreen,
+                 arguments: {
+                   'dateTrip': DateFormat('MMMM d, y', 'ar').format(selectedDate!),
+                   'destinationStation': destinationArea,
+                   'fromStation': fromArea,
+                 },);
+                // Navigator.of(context).pushNamed(AppRoutes.tripsScreen);
                 },
               texxt: "بحث",
               textColor: Colors.white,
