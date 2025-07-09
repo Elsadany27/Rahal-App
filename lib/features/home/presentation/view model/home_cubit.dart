@@ -3,6 +3,8 @@ import 'package:reservation/features/home/data/datasource/home_datasource.dart';
 import 'package:reservation/features/home/data/model/trips_model.dart';
 import 'package:reservation/features/home/presentation/view%20model/home_state.dart';
 
+import '../../data/model/single_trip_model.dart';
+
 class HomeCubit extends Cubit<HomeState>{
   HomeCubit():super(InitialState());
   HomeDatasource _homeDatasource=HomeDatasource();
@@ -15,6 +17,18 @@ class HomeCubit extends Cubit<HomeState>{
       emit(SuccessGetTrips(dataTrips: dataTripss!));
     }catch(e){
       emit(FailureGetTrips(errorMessage: e.toString()));
+    }
+  }
+
+  //get trips
+  getSingleTripCubit({context,int? id})async{
+    SingleTripModel? dataSingleTrip;
+    emit(IsloadingGetSingleTrip());
+    try{
+      dataSingleTrip =await _homeDatasource.getSingleTrips(context: context,id: id);
+      emit(SuccessGetSingleTrip(dataSingleTrips: dataSingleTrip!));
+    }catch(e){
+      emit(FailureGetSingleTrips(errorMessage: e.toString()));
     }
   }
 

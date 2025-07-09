@@ -4,6 +4,7 @@ import 'package:reservation/features/home/data/model/trips_model.dart';
 
 import '../../../../core/services/sharred_prefrence.dart';
 import '../../../../core/utils/constance.dart';
+import '../model/single_trip_model.dart';
 
 class HomeDatasource {
   Dio dio=Dio();
@@ -98,5 +99,39 @@ class HomeDatasource {
 
     return null;
   }
+
+  //get single trip based on id
+   getSingleTrips({required BuildContext context,int? id}) async {
+    final token = await SharedPrefsService.getToken();
+    String urlSingleTrip = "${Constance.baseUrl}/trips/$id/";
+
+    try {
+      Response response = await dio.get(urlSingleTrip, options: Options(headers: {'Authorization': 'Bearer $token'}),);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        SingleTripModel? data = SingleTripModel.fromJson(response.data);
+        print(data.id);
+        return data;
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("فشل فى تحميل البيانات")),);
+      }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("خطأ من السيرفر: ${e.response!.statusCode}")),);
+        print("Error ${e.response!.statusCode}: ${e.response!.data}");
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("تأكد من وجود اتصال بالإنترنت")),);
+        print("Network error: $e");
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("حدث خطأ غير متوقع")),);
+      print("Unexpected error: $e");
+    }
+    return null;
+  }
+
+
+
+
 
 }

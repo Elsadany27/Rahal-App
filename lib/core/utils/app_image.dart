@@ -9,5 +9,6 @@ class Assets {
   //home
   static const String homeUmage="assets/images/home-removebg-preview (1).png";
   static const String profileImage="assets/images/profile-removebg-preview.png";
+  static const String arrowImage="assets/images/arr-removebg-preview.png";
 
 }
