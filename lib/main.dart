@@ -19,6 +19,7 @@ class RahalApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         fontFamily: GoogleFonts.notoKufiArabic().fontFamily
       ),
       debugShowCheckedModeBanner: false,

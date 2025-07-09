@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_color.dart';
+import '../trip_details.dart';
 
 class DegreeOfTrip extends StatelessWidget {
-  const DegreeOfTrip({super.key});
+   DegreeOfTrip({super.key,this.id});
 
+   int? id;
   @override
   Widget build(BuildContext context) {
     final screenSize=MediaQuery.of(context).size;
@@ -17,7 +19,9 @@ class DegreeOfTrip extends StatelessWidget {
         title: Text("Bussiness Class DD",style: TextStyle(color: Colors.black38,fontSize: screenSize.width*0.035,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,),
         subtitle: Text("درجه أولى",style: TextStyle(color: Colors.black38,fontSize: screenSize.width*0.035,fontWeight: FontWeight.w600),textDirection: TextDirection.rtl,),
         leading: InkWell(
-          onTap: (){},
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => TripDetails(id: id,),));
+          },
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

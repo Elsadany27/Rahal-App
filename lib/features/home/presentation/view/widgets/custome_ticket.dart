@@ -35,9 +35,10 @@ class TicketClipper extends CustomClipper<Path> {
 }
 
 class TicketWidget extends StatelessWidget {
-  final String? fromArea, toArea,dateArrivee,dateSatrtt,allTime;
+  final String? fromArea, toArea,dateArrivee,dateSatrtt,allTime,price;
+  final int? idd;
 
-  const TicketWidget({Key? key, this.fromArea, this.toArea,this.dateSatrtt,this.dateArrivee,this.allTime}) : super(key: key);
+  const TicketWidget({Key? key,this.idd, this.fromArea, this.toArea,this.dateSatrtt,this.dateArrivee,this.allTime,this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +54,12 @@ class TicketWidget extends StatelessWidget {
         color: Colors.white54,
         child: Column(children: [
           //degree of trip
-          const DegreeOfTrip(),
+           DegreeOfTrip(id:idd ,),
           SizedBox(height: screenSize.height*0.02,),
           //destination details
           CustomeDestinationDetails(fromArea: fromArea,toArea: toArea,dateArrive: dateArrivee,dateStart:dateSatrtt ,overallTime: allTime,),
           //reservation
-          ReservationTripDetails(price: "350",)
+          ReservationTripDetails(price: "$price",)
         ],),
       ),
     );
