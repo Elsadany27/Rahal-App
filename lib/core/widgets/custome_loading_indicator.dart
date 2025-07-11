@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reservation/core/utils/app_color.dart';
 
 class CustomeLoadingIndicator extends StatelessWidget {
   const CustomeLoadingIndicator({super.key});
@@ -8,7 +9,7 @@ class CustomeLoadingIndicator extends StatelessWidget {
     return CircleAvatar(
       radius: 20,
       backgroundColor: Colors.black,
-      child: CircularProgressIndicator(color: Colors.red,),
+      child: CircularProgressIndicator(color: AppColor.green,),
     );
   }
 }

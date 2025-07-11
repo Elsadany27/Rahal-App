@@ -5,6 +5,7 @@ import 'package:reservation/features/home/presentation/view%20model/home_cubit.d
 import 'package:reservation/features/home/presentation/view%20model/home_state.dart';
 import 'package:reservation/features/home/presentation/view/widgets/custome_container_trip_details.dart';
 import 'package:reservation/features/home/presentation/view/widgets/custome_ticket.dart';
+import '../../../../core/utils/app_color.dart';
 import '../../../../core/widgets/custome_appbar.dart';
 
 class TripsPage extends StatelessWidget {
@@ -52,7 +53,13 @@ class TripsPage extends StatelessWidget {
                 final trip = filteredTrips[index];
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TicketWidget(price: trip.price,fromArea: trip.fromArea, toArea: trip.toArea, allTime: trip.duration, dateArrivee: trip.timeOfReach, dateSatrtt: trip.timeOfTravel,idd: trip.id,),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text("${filteredTrips.length}:عدد نتائج البحث ",style: TextStyle(color: Colors.black54,fontSize: screenSize.width*0.035,fontWeight: FontWeight.w700),textDirection: TextDirection.ltr,),SizedBox(height: screenSize.height*0.015,),
+                      TicketWidget(price: trip.price,fromArea: trip.fromArea, toArea: trip.toArea, allTime: trip.duration, dateArrivee: trip.timeOfReach, dateSatrtt: trip.timeOfTravel,idd: trip.id,),
+                    ],
+                  ),
                 );
               },),
           );
