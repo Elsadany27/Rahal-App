@@ -11,4 +11,13 @@ class Assets {
   static const String profileImage="assets/images/profile-removebg-preview.png";
   static const String arrowImage="assets/images/arr-removebg-preview.png";
 
+  static const String airconditionImage="assets/images/air_condition-removebg-preview.png";
+  static const String chargeImage="assets/images/charge-removebg-preview.png";
+  static const String drinksImage="assets/images/drinks-removebg-preview.png";
+  static const String emergencyImage="assets/images/emerdency-removebg-preview.png";
+  static const String foodreservationImage="assets/images/food_reservation-removebg-preview.png";
+  static const String toiletImage="assets/images/toilet-removebg-preview.png";
+  static const String tvImage="assets/images/tv-removebg-preview.png";
+  static const String driverBusImage="assets/images/driverbus-removebg-preview.png";
+
 }

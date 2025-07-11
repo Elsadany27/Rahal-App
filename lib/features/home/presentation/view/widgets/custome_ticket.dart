@@ -59,7 +59,7 @@ class TicketWidget extends StatelessWidget {
           //destination details
           CustomeDestinationDetails(fromArea: fromArea,toArea: toArea,dateArrive: dateArrivee,dateStart:dateSatrtt ,overallTime: allTime,),
           //reservation
-          ReservationTripDetails(price: "$price",)
+          ReservationTripDetails(price: "$price",idTrip: idd,)
         ],),
       ),
     );
