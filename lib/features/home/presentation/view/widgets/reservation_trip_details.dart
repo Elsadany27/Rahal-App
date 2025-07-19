@@ -21,7 +21,7 @@ class ReservationTripDetails extends StatelessWidget {
           MaterialButton(
             shape: OutlineInputBorder(borderRadius: BorderRadius.circular(7),borderSide: BorderSide(color: AppColor.greenLight)),
             onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => seatsBusPage(idTrip: idTrip,),));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SeatsBusPage(idTrip: idTrip,),));
             },height: screenSize.height*0.04,color: AppColor.greenLight,textColor: AppColor.green,child: Text("حجز",style: TextStyle(fontWeight: FontWeight.w700,fontSize: screenSize.width*0.04),),)
         ],),
     );
