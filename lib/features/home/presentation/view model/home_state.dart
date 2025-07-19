@@ -1,3 +1,4 @@
+import 'package:reservation/features/home/data/model/seats_available_model.dart';
 import 'package:reservation/features/home/data/model/trips_model.dart';
 
 import '../../data/model/single_trip_model.dart';
@@ -25,4 +26,15 @@ class SuccessGetSingleTrip extends HomeState{
 class FailureGetSingleTrips extends HomeState{
   String? errorMessage;
   FailureGetSingleTrips({this.errorMessage});
+}
+
+//available seats
+class IsloadingSeats extends HomeState{}
+class SuccessSeats extends HomeState{
+  SeatsModel? seatsData;
+  SuccessSeats({this.seatsData});
+}
+class FailureSeats extends HomeState{
+  String? errorMessage;
+  FailureSeats({this.errorMessage});
 }

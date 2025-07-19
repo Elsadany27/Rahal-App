@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation/features/home/data/datasource/home_datasource.dart';
+import 'package:reservation/features/home/data/model/seats_available_model.dart';
 import 'package:reservation/features/home/data/model/trips_model.dart';
 import 'package:reservation/features/home/presentation/view%20model/home_state.dart';
 
@@ -29,6 +30,19 @@ class HomeCubit extends Cubit<HomeState>{
       emit(SuccessGetSingleTrip(dataSingleTrips: dataSingleTrip!));
     }catch(e){
       emit(FailureGetSingleTrips(errorMessage: e.toString()));
+    }
+  }
+
+  //get seats
+  getSeatsAvailableCubit({context,int? idTrip})async{
+    SeatsModel? dataSeats;
+    emit(IsloadingSeats());
+    try{
+      dataSeats=await _homeDatasource.getAvailableSeats(context: context,idTrip: idTrip);
+      emit(SuccessSeats(seatsData: dataSeats));
+    }catch(e){
+      print(e);
+      emit(FailureSeats(errorMessage: e.toString()));
     }
   }
 
